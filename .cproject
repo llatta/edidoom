@@ -21,8 +21,8 @@
 							<tool id="cdt.managedbuild.tool.gnu.cross.c.compiler.244672254" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.920567455" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.c.optimization.level.none" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.debugging.level.852625168" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
-								<option id="gnu.c.compiler.option.misc.other.878818801" name="Other flags" superClass="gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="${CFLAGS}" valueType="string"/>
-								<option id="gnu.c.compiler.option.dialect.std.198579473" name="Language standard" superClass="gnu.c.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.c.compiler.dialect.c11" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.misc.other.878818801" name="Other flags" superClass="gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="${CFLAGS} -pthread" valueType="string"/>
+								<option id="gnu.c.compiler.option.dialect.std.198579473" name="Language standard" superClass="gnu.c.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.c.compiler.dialect.default" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.637577451" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="${DEVKIT_HOME}/devkit-x86/sysroots/i586-poky-linux/usr/include"/>
 								</option>
@@ -49,7 +49,7 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cross.c.linker.1726018804" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker"/>
 							<tool id="cdt.managedbuild.tool.gnu.cross.cpp.linker.2020206044" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker">
-								<option id="gnu.cpp.link.option.flags.1573627538" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="${LDFLAGS} -l:libmraa.so.0.5.4" valueType="string"/>
+								<option id="gnu.cpp.link.option.flags.1573627538" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="${LDFLAGS} -l:libmraa.so.0.5.4 -pthread" valueType="string"/>
 								<option id="gnu.cpp.link.option.paths.1308586990" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="/Users/Wire/Projects/Edison/iotdk-ide-mac/iot-devkit/workspace/mraa/lib"/>
 								</option>
@@ -67,9 +67,6 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
-					<fileInfo id="cdt.managedbuild.config.gnu.cross.exe.debug.705091800.1979661529" name="README.asm" rcbsApplicability="disable" resourcePath="src/README.asm" toolsToInvoke="cdt.managedbuild.tool.gnu.cross.assembler.1849441191.550466424">
-						<tool id="cdt.managedbuild.tool.gnu.cross.assembler.1849441191.550466424" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler.1849441191"/>
-					</fileInfo>
 					<sourceEntries>
 						<entry excluding="README.asm" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
