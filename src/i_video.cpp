@@ -345,7 +345,23 @@ void I_FinishUpdate (void)
 		}
 	}
 
+#ifdef PROFILE_FRAME
+	struct timespec t;
+	clock_gettime(CLOCK_REALTIME, &t);
+	double startTime = (double)t.tv_sec + (double)t.tv_nsec / 1.0e9;
+#endif
+
 	tft.pushColors(g_framebuffer, numPixel, true);
+
+#ifdef PROFILE_FRAME
+	clock_gettime(CLOCK_REALTIME, &t);
+	double endTime = (double)t.tv_sec + (double)t.tv_nsec / 1.0e9;
+
+	static double lastEndTime = 0;
+
+	printf("I_Video: Draw time %f, frame time %f\n", endTime - startTime, endTime - lastEndTime);
+	lastEndTime = endTime;
+#endif
 }
 
 
