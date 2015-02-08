@@ -21,9 +21,6 @@
 //
 //-----------------------------------------------------------------------------
 
-extern "C"
-{
-
 static const char
 rcsid[] = "$Id: i_x.c,v 1.6 1997/02/03 22:45:10 b1 Exp $";
 
@@ -252,7 +249,8 @@ void I_FinishUpdate (void)
 	CD_DATA;
 
 	uint8_t* s = screens[0];
-	for (int i = SCREENWIDTH * SCREENHEIGHT; i; i--)
+	int i;
+	for (i = SCREENWIDTH * SCREENHEIGHT; i; i--)
 	{
 		write16(g_palette[*s++]);
 	}
@@ -298,30 +296,32 @@ void I_SetPalette (byte* palette)
 
 void I_InitGraphics(void)
 {
+	int i;
+
 	m_csPinCtx = mraa_gpio_init(TFT_CS);
-	if (m_csPinCtx == nullptr) {
+	if (m_csPinCtx == NULL) {
 		fprintf (stderr, "Are you sure that pin%d you requested is valid on your platform?", TFT_CS);
 		exit (1);
 	}
 	m_cdPinCtx = mraa_gpio_init(TFT_CD);
-	if (m_cdPinCtx == nullptr) {
+	if (m_cdPinCtx == NULL) {
 		fprintf (stderr, "Are you sure that pin%d you requested is valid on your platform?", TFT_CD);
 		exit (1);
 	}
 	m_wrPinCtx = mraa_gpio_init(TFT_WR);
-	if (m_wrPinCtx == nullptr) {
+	if (m_wrPinCtx == NULL) {
 		fprintf (stderr, "Are you sure that pin%d you requested is valid on your platform?", TFT_WR);
 		exit (1);
 	}
 	m_rdPinCtx = mraa_gpio_init(TFT_RD);
-	if (m_rdPinCtx == nullptr) {
+	if (m_rdPinCtx == NULL) {
 		fprintf (stderr, "Are you sure that pin%d you requested is valid on your platform?", TFT_RD);
 		exit (1);
 	}
-	for (int i = 0; i < 8; ++i)
+	for (i = 0; i < 8; ++i)
 	{
 		m_dataPinCtx[i] = mraa_gpio_init(TFT_DATA[i]);
-		if (m_dataPinCtx[i] == nullptr) {
+		if (m_dataPinCtx[i] == NULL) {
 			fprintf (stderr, "Are you sure that pin%d you requested is valid on your platform?", TFT_DATA[i]);
 			exit (1);
 		}
@@ -333,7 +333,7 @@ void I_InitGraphics(void)
 	mraa_gpio_dir(m_cdPinCtx, MRAA_GPIO_OUT);
 	mraa_gpio_dir(m_wrPinCtx, MRAA_GPIO_OUT);
 	mraa_gpio_dir(m_rdPinCtx, MRAA_GPIO_OUT);
-    for (int i = 0; i < 8; ++i)
+    for (i = 0; i < 8; ++i)
 	{
 		mraa_gpio_dir(m_dataPinCtx[i], MRAA_GPIO_OUT);
 	}
@@ -374,7 +374,7 @@ void I_InitGraphics(void)
 	CS_ACTIVE;
 	CD_COMMAND;
 	write8(0x00);
-	for(uint8_t i=0; i<3; i++) WR_STROBE; // Three extra 0x00s
+	for(i=0; i<3; i++) WR_STROBE; // Three extra 0x00s
 	CS_IDLE;
 
 	delay(200);
@@ -490,7 +490,7 @@ void I_InitGraphics(void)
 	CD_COMMAND;
 	write8(0x2C);
 	CD_DATA;
-	for (int i = TFTWIDTH * TFTHEIGHT; i; i--)
+	for (i = TFTWIDTH * TFTHEIGHT; i; i--)
 	{
 		write16(0);
 	}
@@ -501,5 +501,3 @@ void I_InitGraphics(void)
 void I_ShutdownGraphics(void)
 {
 }
-
-} // extern C
