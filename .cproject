@@ -37,7 +37,6 @@
 								<option id="gnu.cpp.compiler.option.debugging.level.1928971402" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.other.other.1432913387" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" useByScannerDiscovery="false" value="${CXXFLAGS}" valueType="string"/>
 								<option id="gnu.cpp.compiler.option.include.paths.1538804187" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="/Users/Wire/Projects/Edison/iotdk-ide-mac/iot-devkit/workspace/mraa/api"/>
 									<listOptionValue builtIn="false" value="${DEVKIT_HOME}/devkit-x86/sysroots/i586-poky-linux/usr/include"/>
 									<listOptionValue builtIn="false" value="${DEVKIT_HOME}/devkit-x86/sysroots/i586-poky-linux/usr/include/c++"/>
 									<listOptionValue builtIn="false" value="${DEVKIT_HOME}/devkit-x86/sysroots/i586-poky-linux/usr/include/c++/i586-poky-linux"/>
@@ -49,9 +48,10 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cross.c.linker.1726018804" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker"/>
 							<tool id="cdt.managedbuild.tool.gnu.cross.cpp.linker.2020206044" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker">
-								<option id="gnu.cpp.link.option.flags.1573627538" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="${LDFLAGS} -l:libmraa.so.0.5.4 -pthread" valueType="string"/>
-								<option id="gnu.cpp.link.option.paths.1308586990" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="/Users/Wire/Projects/Edison/iotdk-ide-mac/iot-devkit/workspace/mraa/lib"/>
+								<option id="gnu.cpp.link.option.flags.1573627538" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="${LDFLAGS} -pthread" valueType="string"/>
+								<option id="gnu.cpp.link.option.paths.1308586990" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths"/>
+								<option id="gnu.cpp.link.option.libs.1737639154" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="mraa"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.207856235" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
