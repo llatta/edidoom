@@ -1385,12 +1385,23 @@ boolean M_Responder (event_t* ev)
 		
 	if (ev->data1&1)
 	{
-	    ch = KEY_ENTER;
+		if (messageToPrint && messageNeedsInput)
+			ch = 'y';
+		else
+			ch = KEY_ENTER;
 	    joywait = I_GetTime() + 5;
 	}
 	if (ev->data1&2)
 	{
-	    ch = KEY_BACKSPACE;
+		if (messageToPrint && messageNeedsInput)
+			ch = 'n';
+		else
+			ch = KEY_BACKSPACE;
+	    joywait = I_GetTime() + 5;
+	}
+	if (ev->data1&4)
+	{
+		ch = KEY_ESCAPE;
 	    joywait = I_GetTime() + 5;
 	}
     }
