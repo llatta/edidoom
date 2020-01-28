@@ -1,0 +1,15 @@
+[Unit]
+Description=Edidoom
+After=wpa_supplicant.service
+Requires=wpa_supplicant.service
+
+[Service]
+Type=idle
+TimeoutStartSec=infinty
+ExecStartPre=/usr/sbin/rfkill unblock bluetooth
+ExecStart=/home/root/edidoom
+Environment="HOME=/home/root"
+Environment="DOOMWADDIR=/home/root"
+
+[Install]
+WantedBy=multi-user.target
