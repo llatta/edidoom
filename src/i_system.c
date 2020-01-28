@@ -137,7 +137,7 @@ void I_Init (void)
 
 	if ((g_gamepad = open(g_gamepadName, O_RDONLY | O_NONBLOCK)) < 0)
 	{
-		fprintf(stderr, "Cannot access gamepad at %s\n", g_gamepadName);
+		fprintf(stderr, "Cannot access gamepad at %s. Will retry.\n", g_gamepadName);
 	}
 }
 
@@ -225,6 +225,14 @@ event_t joystickEvent = { ev_joystick };
 
 void I_GetEvent(void)
 {
+	if (g_gamepad < 0)
+	{
+		if ((g_gamepad = open(g_gamepadName, O_RDONLY | O_NONBLOCK)) < 0)
+		{
+			return;
+		}
+	}
+
 	while (1)
 	{
 		struct input_event ev[64];
